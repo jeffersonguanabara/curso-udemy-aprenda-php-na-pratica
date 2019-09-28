@@ -1,14 +1,10 @@
 <?php
 
-$nome = "João";
-$sobrenome = "Pedro";
-$idade = 21;
-$peso = 76.2;
-$email = "joaopedro@email.com";
+function getInfo($atributo) {
+    $dados = ['titulo'=>"SiteModelo", 'descricao'=>"Programando com PHP"];
 
-$nomeCompleto = $nome." ".$sobrenome;
-
-$msg = "Nome: $nomeCompleto - Idade: $idade - Peso: $peso - Email: $email";
+    return $dados[$atributo];
+}
 
 ?>
 
@@ -18,10 +14,11 @@ $msg = "Nome: $nomeCompleto - Idade: $idade - Peso: $peso - Email: $email";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Título</title>
+    <title><?php echo getInfo('titulo')?></title>
 </head>
 <body>
-    <h1>PHP com HTML</h1>
-    <h4><?php echo $msg ?></h4>
+    <h2><?php echo getInfo("titulo")?></h2>
+    <p><?php echo getInfo("descricao")?></p>
+    
 </body>
 </html>
