@@ -29,6 +29,20 @@ function exibeUsuario(){
     return $html;
 }
 
+function exibeUsuario2(){
+    $usuarios = getUsuario();
+    $html = "";
+
+    for ($index = 0; $index < count($usuarios); $index++) {
+        $nome = $usuarios[$index]['nome'];
+        $email = $usuarios[$index]['email'];
+        $html .= "<li>Nome: $nome - Email: $email</li>";
+
+    }
+
+    return $html;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +58,8 @@ function exibeUsuario(){
     <p><?php echo getInfo("descricao")?></p>
 
     <ul>
-        <?php echo exibeUsuario() ?>
+        <!-- <?php echo exibeUsuario() ?> -->
+        <?php echo exibeUsuario2() ?>
     </ul>
     
 </body>
