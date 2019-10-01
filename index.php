@@ -1,27 +1,51 @@
 <?php
 
-$nome = "João";
-$sobrenome = "Pedro";
-$idade = 21;
-$peso = 76.2;
-$email = "joaopedro@email.com";
+function getInfo($atributo) {
+    $dados = ['titulo'=>"SiteModelo", 'descricao'=>"Programando com PHP"];
 
-$nomeCompleto = $nome." ".$sobrenome;
+    return $dados[$atributo];
+}
 
-$msg = "Nome: $nomeCompleto - Idade: $idade - Peso: $peso - Email: $email";
+function getUsuario() {
+    $dados = [
+        ["nome" => "Pedro", "email" => "pedro.dias@email.com"],
+        ["nome" => "Paula", "email" => "paula.carvalho@email.com"],
+        ["nome" => "Tiago", "email" => "tiago.rodrigues@email.com"]
+    ];
+
+    return $dados;
+}
+
+function exibeUsuario(){
+    $usuarios = getUsuario();
+    $html = "";
+
+    foreach($usuarios as $chave => $usuario) {
+        $nome = $usuario['nome'];
+        $email = $usuario['email'];
+        $html .= "<li>Nome: $nome - Email: $email</li>";
+    }
+
+    return $html;
+}
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Título</title>
+    <title><?php echo getInfo('titulo')?></title>
 </head>
 <body>
-    <h1>PHP com HTML</h1>
-    <h4><?php echo $msg ?></h4>
+    <h2><?php echo getInfo("titulo")?></h2>
+    <p><?php echo getInfo("descricao")?></p>
+
+    <ul>
+        <?php echo exibeUsuario() ?>
+    </ul>
+    
 </body>
 </html>
