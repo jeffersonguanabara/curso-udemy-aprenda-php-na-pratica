@@ -6,10 +6,33 @@ function getInfo($atributo) {
     return $dados[$atributo];
 }
 
+function getUsuario() {
+    $dados = [
+        ["nome" => "Pedro", "email" => "pedro.dias@email.com"],
+        ["nome" => "Paula", "email" => "paula.carvalho@email.com"],
+        ["nome" => "Tiago", "email" => "tiago.rodrigues@email.com"]
+    ];
+
+    return $dados;
+}
+
+function exibeUsuario(){
+    $usuarios = getUsuario();
+    $html = "";
+
+    foreach($usuarios as $chave => $usuario) {
+        $nome = $usuario['nome'];
+        $email = $usuario['email'];
+        $html .= "<li>Nome: $nome - Email: $email</li>";
+    }
+
+    return $html;
+}
+
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +42,10 @@ function getInfo($atributo) {
 <body>
     <h2><?php echo getInfo("titulo")?></h2>
     <p><?php echo getInfo("descricao")?></p>
+
+    <ul>
+        <?php echo exibeUsuario() ?>
+    </ul>
     
 </body>
 </html>
